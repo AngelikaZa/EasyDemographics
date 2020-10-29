@@ -114,6 +114,30 @@ def groupCompare(variables, group, dataframe, number_groups):
     results["Type"] = types # type of statistical test used
     return(results)
 
+# Function to compare categorical variables between groups
+### INPUTS: 
+###### variables: the list of variables that you want to compare between groups (they will be columns of the dataframe)
+###### group: the name of the variable describing the groups you want to compare as a string (will be a column of the dataframe)
+###### dataframe: the pandas dataframe 
+### OUTPUTS: 
+###### returns a new dataframe with the characteristis, statistics (test and p value)
+def categoricalCompare(variables, group, df)
+    ## Empty variables to hold results
+    statistic = []
+    p_value = []
+    for var in variables:
+        data=df[np.isfinite(df[var])]
+        tab = pd.crosstab(data.PD_VHAny,data[var])
+        r, p, dof, exp = stats.chi2_contingency(tab)
+        statistic.append(r)
+        p_value.append(p)
+    ### Combine results on dataframe
+    results = pd.DataFrame(data=np.zeros((len(variables), 0))) # empty dataframe
+    results["Variable"] = variables # variable names
+    results["ChiSquare"] = statistic # statistic
+    results["Pvalue"] = p_value # p_value
+    return(results)
+
 # Function to return group statistics, mean and std for a dataframe
 ### IMPUTS: 
 ###### df: the pandas dataframe
