@@ -87,7 +87,7 @@ def groupCompare(variables, group, dataframe, number_groups):
                 types.append("NA")
         elif number_groups == 2:
             if var in NormallyDistributed: ## Normally distributed then do ttest
-                data=df[np.isfinite(df[var])]
+                data=dataframe[np.isfinite(dataframe[var])]
                 v1 = data[data.PD_VHAny == 1][var]
                 v2 = data[data.PD_VHAny == 2][var]
                 r, p = stats.ttest_ind(v1, v2)
@@ -95,7 +95,7 @@ def groupCompare(variables, group, dataframe, number_groups):
                 p_value.append(p)
                 types.append("t-test")
             elif var in NonNormallyDistributed: ### Non normally distributed then do Mann-Whitney
-                data = df[np.isfinite(df[var])] 
+                data = dataframe[np.isfinite(dataframe[var])] 
                 v1 = data[data.PD_VHAny == 1][var]
                 v2 = data[data.PD_VHAny == 2][var]
                 r,p = stats.mannwhitneyu(v1, v2) ### run Kruskal wallis
