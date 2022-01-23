@@ -121,7 +121,7 @@ def groupCompare(variables, group, dataframe, number_groups):
 ###### dataframe: the pandas dataframe 
 ### OUTPUTS: 
 ###### returns a new dataframe with the characteristis, statistics (test and p value)
-def categoricalCompare(variables, group, df)
+def categoricalCompare(variables, group, df):
     ## Empty variables to hold results
     statistic = []
     p_value = []
